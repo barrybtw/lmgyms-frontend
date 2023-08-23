@@ -20,10 +20,10 @@ const FormSchema = z.object({
   password: z.string(),
 });
 
-type SignUpSchemaType = z.infer<typeof FormSchema>;
+type SignInSchemaType = z.infer<typeof FormSchema>;
 
 export default function FormComponent() {
-  const form = useForm<SignUpSchemaType>({
+  const form = useForm<SignInSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       username: '',
@@ -72,7 +72,6 @@ export default function FormComponent() {
                     placeholder='password'
                     type='password'
                     autoComplete='password'
-                    name='password'
                     {...field}
                   />
                 </FormControl>
