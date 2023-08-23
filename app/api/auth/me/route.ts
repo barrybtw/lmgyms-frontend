@@ -11,7 +11,7 @@ export const GET = async (Req: Request) => {
       toreturn.push({ name: cookie.name, value: cookie.value });
     });
 
-  const actualapi = await fetch('http://0.0.0.0:5454/user/me').then((res) =>
+  const actualapi = await fetch(env.FASTIFY_BACKEND + '/user/me').then((res) =>
     res.json(),
   );
   return NextResponse.json({ cookies: toreturn, response: actualapi });

@@ -10,7 +10,7 @@ export default function useSession() {
   } = useQuery({
     queryKey: ['session'],
     queryFn: () =>
-      fetch('/api/auth/me', {
+      fetch('api/auth/me', {
         headers: new Headers({ 'content-type': 'application/json' }),
       }).then((res) => res.json()),
     onSuccess: (data) => {
