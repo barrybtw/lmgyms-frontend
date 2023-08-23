@@ -60,7 +60,7 @@ export default function FormComponent() {
             control={form.control}
             name='username'
             render={({ field }) => (
-              <FormItem className='my-4 min-h-[123px]'>
+              <FormItem className='sm:my-4 my-1 min-h-[123px]'>
                 <FormLabel>Username</FormLabel>
                 <FormDescription>
                   This is your public display name.
@@ -76,7 +76,7 @@ export default function FormComponent() {
             control={form.control}
             name='password'
             render={({ field }) => (
-              <FormItem className='my-4 min-h-[123px]'>
+              <FormItem className='sm:my-4 my-1 min-h-[123px]'>
                 <FormLabel>Password</FormLabel>
                 <FormDescription>
                   This is your password, make it strong!
@@ -93,7 +93,11 @@ export default function FormComponent() {
               </FormItem>
             )}
           />
-          <Button type='submit' className='my-6' disabled={isSubmitting}>
+          <Button
+            type='submit'
+            className='my-4 sm:my-6'
+            disabled={isSubmitting}
+          >
             Login
           </Button>
         </form>
