@@ -14,15 +14,19 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
+import { useState } from 'react';
 
 const FormSchema = z.object({
-  username: z.string(),
-  password: z.string(),
+  username: z.string().min(3).max(20),
+  password: z.string().min(8),
 });
 
 type SignInSchemaType = z.infer<typeof FormSchema>;
 
 export default function FormComponent() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   const form = useForm<SignInSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -32,7 +36,17 @@ export default function FormComponent() {
   });
 
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
+    setIsSubmitting(true);
+
+    toast({
+      title: 'Success',
+      description: 'You have successfully logged in!',
+    });
     console.log(data);
+
+    setTimeout(() => {
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   return (
@@ -46,7 +60,7 @@ export default function FormComponent() {
             control={form.control}
             name='username'
             render={({ field }) => (
-              <FormItem className='my-4'>
+              <FormItem className='my-4 min-h-[123px]'>
                 <FormLabel>Username</FormLabel>
                 <FormDescription>
                   This is your public display name.
@@ -62,7 +76,7 @@ export default function FormComponent() {
             control={form.control}
             name='password'
             render={({ field }) => (
-              <FormItem className='my-4'>
+              <FormItem className='my-4 min-h-[123px]'>
                 <FormLabel>Password</FormLabel>
                 <FormDescription>
                   This is your password, make it strong!
@@ -79,7 +93,7 @@ export default function FormComponent() {
               </FormItem>
             )}
           />
-          <Button type='submit' className='my-6'>
+          <Button type='submit' className='my-6' disabled={isSubmitting}>
             Login
           </Button>
         </form>

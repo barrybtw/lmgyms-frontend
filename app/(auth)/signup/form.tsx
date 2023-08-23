@@ -59,78 +59,72 @@ export default function FormComponent() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className='container flex flex-col justify-between max-w-xl'
+          className='container max-w-xl'
         >
-          <div>
-            <FormField
-              control={form.control}
-              name='username'
-              render={({ field }) => (
-                <FormItem className='my-4 min-h-[123px]'>
-                  <FormLabel>Username</FormLabel>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
-                  <FormControl>
-                    <Input
-                      placeholder='username'
-                      autoComplete='username'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name='password'
-              render={({ field }) => (
-                <FormItem className='my-4 min-h-[123px]'>
-                  <FormLabel>Password</FormLabel>
-                  <FormDescription>
-                    This is your password, make it strong!
-                  </FormDescription>
-                  <FormControl>
-                    <Input
-                      placeholder='password'
-                      type='password'
-                      autoComplete='password'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name='repeatPassword'
-              render={({ field }) => (
-                <FormItem className='my-4 min-h-[123px]'>
-                  <FormLabel>Password</FormLabel>
-                  <FormDescription>
-                    Repeat it one more time! Just to be safe
-                  </FormDescription>
-                  <FormControl>
-                    <Input
-                      placeholder='repeat password'
-                      type='password'
-                      autoComplete='password'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+          <FormField
+            control={form.control}
+            name='username'
+            render={({ field }) => (
+              <FormItem className='my-4 min-h-[123px]'>
+                <FormLabel>Username</FormLabel>
+                <FormDescription>
+                  This is your public display name.
+                </FormDescription>
+                <FormControl>
+                  <Input
+                    placeholder='username'
+                    autoComplete='username'
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='password'
+            render={({ field }) => (
+              <FormItem className='my-4 min-h-[123px]'>
+                <FormLabel>Password</FormLabel>
+                <FormDescription>
+                  This is your password, make it strong!
+                </FormDescription>
+                <FormControl>
+                  <Input
+                    placeholder='password'
+                    type='password'
+                    autoComplete='password'
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='repeatPassword'
+            render={({ field }) => (
+              <FormItem className='my-4 min-h-[123px]'>
+                <FormLabel>Password</FormLabel>
+                <FormDescription>
+                  Repeat it one more time! Just to be safe
+                </FormDescription>
+                <FormControl>
+                  <Input
+                    placeholder='repeat password'
+                    type='password'
+                    autoComplete='password'
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-          <Button
-            type='submit'
-            className='w-auto my-6 mr-auto'
-            disabled={isSubmitting}
-          >
+          <Button type='submit' className='my-6' disabled={isSubmitting}>
             Sign up
           </Button>
         </form>
